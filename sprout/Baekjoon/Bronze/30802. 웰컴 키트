@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	cout.tie(NULL);
+
+	int N;
+	cin >> N;
+
+	vector<int> shirt(6);
+	int T, P;
+
+	for (int i{ 0 }; i < 6; i++) {
+		cin >> shirt[i];
+	}
+	cin >> T >> P;
+
+	int T_ans{ 0 }, P_pack{ 0 }, P_one{ 0 };
+	for (int i{ 0 }; i < 6; i++) {
+		T_ans += shirt[i] / T;
+		if (shirt[i] % T) T_ans++;
+	}
+
+	cout << T_ans << "\n";
+	cout << N / P << " " << N % P << "\n";
+}
