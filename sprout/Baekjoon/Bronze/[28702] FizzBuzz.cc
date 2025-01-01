@@ -30,5 +30,4 @@ int main() {
 	else if (isThree) cout << "Fizz";
 	else if (!(num % 5)) cout << "Buzz";
 	else cout << num;
-
 }
