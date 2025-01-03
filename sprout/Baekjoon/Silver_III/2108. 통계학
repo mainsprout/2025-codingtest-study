@@ -1,0 +1,56 @@
+#include <iostream>
+#include <vector>
+#include <map>
+#include <algorithm>
+#include <math.h>
+using namespace std;
+
+int main() {
+	int N;
+	cin >> N;
+
+	vector<int> v;
+	map<int, int> m;
+	int n; int sum{ 0 };
+	for (int i{ 0 }; i < N; i++) {
+		cin >> n;
+		sum += n;
+		v.push_back(n);
+		m[n]++;
+	}
+
+	double ans1 = round(sum / (double)N);
+	int a = ans1;
+	cout << a << "\n";
+
+	sort(v.begin(), v.end());
+	cout << v[N / 2] << "\n";
+
+	int max{ 0 }, ans{ 600000 }, ans2{ 600000 };
+	for (map<int, int>::iterator it = m.begin(); it != m.end(); it++) {
+		if (it->second == max) {
+			if (ans == 600000) {
+				ans = it->second;
+			}
+			else if (ans > it->first) {
+				ans2 = ans;
+				ans = it->first;
+			}
+			else if (ans2 > it->first) {
+				ans2 = it->first;
+			}
+		}
+		else if (it->second > max) {
+			max = it->second;
+			ans = it->first;
+			ans2 = 600000;
+		}
+	}
+	if (ans2 == 600000) cout << ans << "\n";
+	else cout << ans2 << "\n";
+
+	int ans4 = v[N - 1] - v[0];
+	cout << ans4 << "\n";
+
+
+}
